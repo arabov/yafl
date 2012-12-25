@@ -1,9 +1,9 @@
 {
     "name": "yafl",
     "description": "Yet another functional library similar to LINQ",
-    "main": "./lib/yafl",
+    "main": "./lib/return",
     "author": "Andrew Laptev, Rustam Tairov",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "licenses" : [
         {
             "type" : "MIT",
@@ -13,6 +13,7 @@
     "devDependencies": {
         "nodeunit": ">0.0.0",
         "uglify-js": "1.2.x",
-        "nodelint": ">0.0.0"
+        "nodelint": ">0.0.0",
+        "underscore": ">0.0.0"
     }
 }

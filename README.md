@@ -3,9 +3,19 @@ Yet another functional library similar to LINQ
 
 #Quick examples
 ```javascript
-var enumNumber = new _e(13);
-var enumArray = new _e([1,2,3,4,5]);
-enumArray.forEach(function(elem){
-    console.log(elem);
-});
+var regions = _.return({74: "Челябинск", 75: "Забайкальский край", 76: "Ярославль", 77: "Москва", 78: "Санкт-Петербург"});
+regions.filter(
+    		function(a) {
+    			if (a == 'Москва') {
+    				return true;
+    			} else {
+    				return false;
+    			}
+    		}
+    	).map(
+    		function(a) {
+    			return a + '!';
+    		}
+    	).toArray());
 ```
+returns - "Москва!"
