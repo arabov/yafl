@@ -110,8 +110,7 @@ exports.checkFilterNow = function(test) {
 		;
 
 	var filterFunc = function (a) {
-		if (a > 4) return true;
-		else return false;
+		return a > 4;
 	};
 
 	test.deepEqual(array.filterNow(filterFunc), [5]);
@@ -159,14 +158,13 @@ exports.checkDistinct = function(test) {
 exports.checkLazys = function(test) {
 	var array = _.return([1,2,3,4,5])
 		, obj = _.return({a:6,b:7,c:8,d:9,e:10})
-		, list = _.return('[11..15]')
+		//, list = _.return('[11..15]')
 		;
 
 	test.deepEqual(
 		array.filter(
 			function(a) {
-				if (a < 3) return false;
-				else return true;
+				return a < 3;
 			}
 		).map(
 			function(a) {
@@ -182,8 +180,7 @@ exports.checkLazys = function(test) {
 			}, 0
 		).filter(
 			function(a) {
-				if (a % 2 == 0) return true;
-				else return false;
+				return a % 2 == 0;
 			}
 		).toArray(1), [6]
 	);
