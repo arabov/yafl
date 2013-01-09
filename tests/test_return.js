@@ -190,3 +190,13 @@ exports.checkLazys = function(test) {
 
 	test.done();
 };
+
+exports.checkSequence = function(test) {
+	var seq1 = _.return('[1..]');
+	test.deepEqual(seq1.toArray(3), [1,2,3]);
+	var seq2 = _.return('[1,-1..-5]');
+	test.deepEqual(seq2.toArray(), [1,0,-1,-2,-3,-4,-5]);
+	var seq3 = _.return('[1..5]');
+	test.deepEqual(seq3.toArray(), [1,2,3,4,5]);
+	test.done();
+};
