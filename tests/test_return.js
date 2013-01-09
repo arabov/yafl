@@ -164,7 +164,7 @@ exports.checkLazys = function(test) {
 	test.deepEqual(
 		array.filter(
 			function(a) {
-				return a < 3;
+				return a >= 3;
 			}
 		).map(
 			function(a) {
