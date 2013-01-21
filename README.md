@@ -1,9 +1,8 @@
 #YAFL
------------------------------------------------
 Yet another functional library similar to LINQ
 
 #Examples
------------------------------------------------
+
 ## Fold functions
 
 ```javascript
