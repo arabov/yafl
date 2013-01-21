@@ -9,7 +9,6 @@ Yet another functional library similar to LINQ
 _.return('[1..5]').foldl(function(a,b) {
 	return a*b;
 }, 1).toArray()
-
 /* returns: [ 1, 2, 6, 24, 120 ] */
 
 _.return([1,2,3,4,5]).foldrNow(function(a,b) {
