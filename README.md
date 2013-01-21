@@ -1,32 +1,28 @@
 #YAFL
-Yet another functional library similar to LINQ
 -----------------------------------------------
+Yet another functional library similar to LINQ
+
 #Examples
-* Fold functions
+-----------------------------------------------
+## Fold functions
 
 ```javascript
 _.return('[1..5]').foldl(function(a,b) {
 	return a*b;
 }, 1).toArray()
-```
 
-returns
-```javascript
-[ 1, 2, 6, 24, 120 ]
+/* returns: [ 1, 2, 6, 24, 120 ] */
 ```
 
 ```javascript
 _.return([1,2,3,4,5]).foldrNow(function(a,b) {
     return a+b;
 }, 0);
-```
-returns
 
-```javascript
-[ 0, 5, 9, 12, 14, 15 ]
+/* returns: [ 0, 5, 9, 12, 14, 15 ] */
 ```
 
-* Map and filter functions
+## Map and filter functions
 
 ```javascript
 var regions = _.return({
@@ -50,12 +46,11 @@ regions.filter(
 		return a + '!';
 	}
 ).toArray().toString();
+
+/* returns: Москва! */
 ```
 
-returns
-<pre> Москва! </pre>
-
-* Zip function
+## Zip function
 
 ```javascript
 var data = [
@@ -90,20 +85,19 @@ _.return(data).zipWith(
     .toArray()
     .join('\n')
 );
-```
 
-returns
-<pre>
-1) Максим Чуркин - 47 points
-2) Вера Аминова - 14 points
-3) Дарья Грекова - 3 points
-4) Иван Демкович - 6 points
-5) Денис Дубленых - 79 points
-6) Алексей Королев - 66 points
-7) Дмитрий Зонин - 14 points
-8) Дмитрий Карпов - 42 points
-9) Вадим Шакуро - 44 points
-10) Кирилл Корнюхин - 2 points
-11) Александр Чегодаев - 57 points
-12) Павел Скрипниченко - 18 points
-</pre>
+/* returns:
+    1) Максим Чуркин - 47 points
+    2) Вера Аминова - 14 points
+    3) Дарья Грекова - 3 points
+    4) Иван Демкович - 6 points
+    5) Денис Дубленых - 79 points
+    6) Алексей Королев - 66 points
+    7) Дмитрий Зонин - 14 points
+    8) Дмитрий Карпов - 42 points
+    9) Вадим Шакуро - 44 points
+    10) Кирилл Корнюхин - 2 points
+    11) Александр Чегодаев - 57 points
+    12) Павел Скрипниченко - 18 points
+*/
+```
