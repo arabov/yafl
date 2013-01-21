@@ -185,6 +185,24 @@ exports.checkLazys = function(test) {
 		).toArray(1), [6]
 	);
 
+	test.deepEqual(
+		_.return([1,2,3,4,5]).zipWith(
+			function(a,b){return [a,b];}
+			, _.return({a:6,b:7,c:8,d:9,e:10})
+		).toArray(), [[1,6],[2,7],[3,8],[4,9],[5,10]]
+	);
+
+	test.deepEqual(
+		_.return([1,2,3,4,5]).zipWith(
+			function(a,b){return [a,b];}
+			, _.return({a:6,b:7,c:8,d:9,e:10})
+		).toArray(), [[1,6],[2,7],[3,8],[4,9],[5,10]]
+	);
+
+	test.deepEqual(
+		_.return([5,4,3,2,1]).zip(_.return('[1,-2..]')).toArray(), [[5,1],[4,-1],[3,-3 ],[2,-5],[1,-7]]
+	);
+
 	test.done();
 };
 
