@@ -15,7 +15,6 @@ _.return('[1..5]').foldl(function(a,b) {
 _.return([1,2,3,4,5]).foldrNow(function(a,b) {
 	return a+b;
 }, 0);
-
 /* returns: [ 0, 5, 9, 12, 14, 15 ] */
 
 
@@ -41,7 +40,6 @@ regions.filter(
 		return a + '!';
 	}
 ).toArray().toString();
-
 /* returns: Москва! */
 
 
@@ -60,7 +58,6 @@ var data = [
 	, "Александр Чегодаев"
 	, "Павел Скрипниченко"
 ];
-
 var rndPoints = _.return('[1,1..]').map(function(a){return _.random(1,100);});
 
 _.return(data).zipWith(
@@ -76,7 +73,6 @@ _.return(data).zipWith(
 	, rndPoints
 )
 	.toArray().join('\n');
-
 /* returns:
  1) Максим Чуркин - 47 points
  2) Вера Аминова - 14 points
