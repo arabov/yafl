@@ -1,8 +1,7 @@
 #YAFL
 Yet another functional library similar to LINQ
-
-#Examples
 -----------------------------------------------
+#Examples
 * Fold functions
 ```javascript
 _.return('[1..5]').foldl(function(a,b) {
@@ -10,7 +9,9 @@ _.return('[1..5]').foldl(function(a,b) {
 }, 1).toArray()
 ```
 returns
-```javascript [ 1, 2, 6, 24, 120 ] ```
+```javascript
+[ 1, 2, 6, 24, 120 ]
+```
 
 ```javascript
 _.return([1,2,3,4,5]).foldrNow(function(a,b) {
@@ -18,9 +19,11 @@ _.return([1,2,3,4,5]).foldrNow(function(a,b) {
 }, 0);
 ```
 returns
-```javascript [ 0, 5, 9, 12, 14, 15 ] ```
+```javascript
+[ 0, 5, 9, 12, 14, 15 ]
+```
 
------------------------------------------------
+
 * Map and filter functions
 ```javascript
 var regions = _.return({
@@ -48,7 +51,6 @@ regions.filter(
 returns
 <pre> Москва! </pre>
 
------------------------------------------------
 * Zip function
 * Map and filter functions
 ```javascript
