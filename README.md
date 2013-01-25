@@ -18,28 +18,56 @@ _.return([1,2,3,4,5]).foldrNow(function(a,b) {
 
 
 // Map and filter
-var regions = _.return({
-	74: "Челябинск",
-	75: "Забайкальский край",
-	76: "Ярославль",
-	77: "Москва",
-	78: "Санкт-Петербург"
-});
-
-regions.filter(
-	function(a) {
-		if (a == 'Москва') {
-			return true;
-		} else {
-			return false;
+var array = [
+	{
+		city : 'Санкт-Петербург', 
+		type : 'Колледж', 
+		name : 'Технический Колледж Управления И Коммерции',
+		address : {
+			street : 'Кондратьевский проспект',
+			house: '46'
+		}
+	},{
+		city : 'Москва',
+		type : 'Университет',
+		name : 'НИЯУ МИФИ',
+		address : {
+			street : 'Каширское шоссе',
+			house: '31'
+		}
+	},{
+		city : 'Москва',
+		type : 'ТЦ',
+		name : 'Европейский ТРЦ',
+		address : {
+			street : 'площадь Киевского Вокзала',
+			house: 'д.2'
+		}
+	},{
+		city : 'Волгоград',
+		type : 'Больница',
+		name : 'Волгоградская областная клиническая больница № 1',
+		address : {
+			street : 'Ангарская улица',
+			house: '13'
 		}
 	}
-).map(
-	function(a) {
-		return a + '!';
-	}
-).toArray().toString();
-/* returns: Москва! */
+];
+
+_.return(array).filter(function(obj) {
+	if (obj.city == 'Москва') return true;				
+	else return false
+}).map(function (obj) {
+	if (obj.type == 'Университет') {
+		var str = obj.name + ' - ';
+		_.return(obj.address).forEach(function (address) {
+		str += address + ' ';
+		});
+		console.log(str);
+	}	
+}).toArray();
+
+/* returns: НИЯУ МИФИ – Каширское шоссе 31 */
 
 
 // Zip
@@ -86,4 +114,7 @@ _.return(data).zipWith(
  11) Александр Чегодаев - 57 points
  12) Павел Скрипниченко - 18 points
  */
+ 
+ 
+ 
 ```
