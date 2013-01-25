@@ -66,7 +66,6 @@ _.return(array).filter(function(obj) {
 		console.log(str);
 	}	
 }).toArray();
-
 /* returns: НИЯУ МИФИ – Каширское шоссе 31 */
 
 
