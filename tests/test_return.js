@@ -1,12 +1,7 @@
-/**
- * Created with JetBrains WebStorm.
- * User: dev
- * Date: 06.12.12
- * Time: 13:34
- * To change this template use File | Settings | File Templates.
- */
-
-var _ = require('../lib/return.js');
+var config = require('../lib/config.js')
+    , globals = require('C:\\Globals\\bin\\cache061')
+    , _ = require('../lib/return.js')
+    ;
 
 exports.checkType = function(test) {
 	var array = _.return([1,2,3,4,5])
@@ -214,4 +209,33 @@ exports.checkSequence = function(test) {
 	var seq3 = _.return('[1..5]');
 	test.deepEqual(seq3.toArray(), [1,2,3,4,5]);
 	test.done();
+};
+
+exports.checkGlobals = function(test) {
+    var myData = new globals.Cache();
+
+    myData.open(config.globalsDBconfig, function(error, result){
+            if (error) {
+                console.log(error);
+            }
+            //console.log(result);
+        }
+    );
+
+    myData.kill({ global: 'tree' });
+    myData.set('tree', 'node_1', 'value_1');
+    myData.set('tree', 'node_1', 'value_2');
+    myData.set('tree', 'node_2', 'value_3');
+    myData.set('tree', 'node_3', 'value_4');
+
+    myData._cacheInstance = true;
+    myData._global = 'tree';
+    myData._subscripts = [];
+
+    _.return(myData).mapNow(function(node) {
+        console.log(node);
+    });
+
+    myData.close();
+
 };

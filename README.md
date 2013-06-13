@@ -113,7 +113,44 @@ _.return(data).zipWith(
  11) Александр Чегодаев - 57 points
  12) Павел Скрипниченко - 18 points
  */
- 
- 
+
+
+//Globals
+ data.set('tree', 'node_1', 'value_1');
+ data.set('tree', 'node_2', 'value_2');
+ data.set('tree', 'node_3', 'value_3');
+
+ data._cacheInstance = true;
+ data._global = 'tree';
+ data._subscripts = [];
+
+ _.return(data).mapNow(function(node) {
+     /*
+     returns:
+         {
+             _cacheInstance: true,
+             _global: 'tree',
+             _subscripts: [ 'node_1' ]
+         }
+         {
+             _cacheInstance: true,
+             _global: 'tree',
+             _subscripts: [ 'node_2' ]
+         }
+         {
+             _cacheInstance: true,
+             _global: 'tree',
+             _subscripts: [ 'node_3' ]
+         }
+     */
+     _.return(node).mapNow(function(value) {
+         /*
+         returns:
+             value_1
+             value_2
+             value_3
+         */
+     });
+ });
  
 ```
