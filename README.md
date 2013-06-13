@@ -152,5 +152,4 @@ _.return(data).zipWith(
          */
      });
  });
- 
 ```
