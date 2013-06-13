@@ -115,7 +115,8 @@ _.return(data).zipWith(
  */
 
 
-//Globals
+//Global
+ data.kill({ global: 'tree' });
  data.set('tree', 'node_1', 'value_1');
  data.set('tree', 'node_2', 'value_2');
  data.set('tree', 'node_3', 'value_3');
@@ -124,7 +125,7 @@ _.return(data).zipWith(
  data._global = 'tree';
  data._subscripts = [];
 
- _.return(data).mapNow(function(node) {
+ _.return(data).forEach(function(node) {
      /*
      returns:
          {
@@ -143,13 +144,13 @@ _.return(data).zipWith(
              _subscripts: [ 'node_3' ]
          }
      */
-     _.return(node).mapNow(function(value) {
+     _.return(node).map(function(value) {
          /*
          returns:
              value_1
              value_2
              value_3
          */
-     });
+     }).toArray();
  });
 ```
