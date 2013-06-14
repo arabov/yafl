@@ -154,4 +154,48 @@ _.return(data).zipWith(
      }).toArray();
  });
 
+data.kill({ global: 'students' });
+data.set('students', 3, 1, 'K6-221');
+data.set('students', 3, 1, 1 , 'Maxim Churkin');
+data.set('students', 3, 1, 2 , 'Vera Aminova');
+data.set('students', 3, 1, 3 , 'Daria Grekova');
+data.set('students', 3, 1, 4 , 'Ivan Demkovich');
+data.set('students', 4, 1, 'K8-221');
+data.set('students', 4, 1, 1 , 'Denis Dublenih');
+data.set('students', 4, 1 ,2 , 'Aleksey Korolev');
+data.set('students', 4, 1 ,3 , 'Dmitriy Zonin');
+data.set('students', 4, 1 ,4 , 'Dmitriy Karpov');
+data.set('students', 4, 2, 'K8-222');
+data.set('students', 4, 2, 1 , 'Vadim Shkuro');
+data.set('students', 4, 2, 2 , 'Kirill Kornuhin');
+data.set('students', 4, 2, 3 , 'Aleksander Chagataev');
+data.set('students', 4, 2, 4 , 'Pavel Skripchenko');
+
+data._cacheInstance = true;
+data._global = 'students';
+data._subscripts = [];
+
+_.return(data).forEach(function(course) {
+    //console.log(course);
+    _.return(course).forEach(function(group) {
+        //console.log(group);
+        _.return(group).filter(function(students) {
+            return students._value.match(/K8/) !== null;
+        }).map(function(students) {
+            _.return(students).forEach(function(value) {
+                console.log(value);
+            });
+        }).toArray();
+    });
+});
+/* returns:
+ Denis Dublenih
+ Aleksey Korolev
+ Dmitriy Zonin
+ Dmitriy Karpov
+ Vadim Shkuro
+ Kirill Kornuhin
+ Aleksander Chagataev
+ Pavel Skripchenko
+ */
 ```

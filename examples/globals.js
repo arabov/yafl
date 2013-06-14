@@ -29,31 +29,10 @@ data._subscripts = [];
 
 var addr = 'Google office - ';
 _.return(data).forEach(function(global) {
+    //console.log(global);
     _.return(global).filter(function(company) {
-        /*
-        {
-            _cacheInstance: true,
-            _global: 'company',
-            _subscripts: [ '1', 'address' ],
-            _value: 'Apple'
-        }
-        {
-            _cacheInstance: true,
-            _global: 'company',
-            _subscripts: [ '2', 'address' ],
-            _value: 'Google'
-        }
-        */
         return company._value === 'Google';
     }).map(function(address) {
-            /*
-            {
-               _cacheInstance: true,
-               _global: 'company',
-               _subscripts: [ '2', 'address' ],
-               _value: 'Google'
-            }
-            */
             _.return(address).forEach(function(part) {
                 _.return(part).forEach(function(value) {
                     addr += value + ' ';
