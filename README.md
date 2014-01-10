@@ -198,4 +198,42 @@ _.return(data).forEach(function(course) {
  Aleksander Chagataev
  Pavel Skripchenko
  */
+
+//Table
+/*
+ Table students
+ | id | group  | name                 |
+ |----|--------|----------------------|
+ | 1  | K6-221 | Maxim Churkin        |
+ | 2  | K6-221 | Vera Aminova         |
+ | 3  | K6-221 | Daria Grekova        |
+ | 4  | K6-221 | Ivan Demkovich       |
+ | 5  | K8-221 | Denis Dublenih       |
+ | 6  | K8-221 | Aleksey Korolev      |
+ | 7  | K8-221 | Dmitriy Zonin        |
+ | 8  | K8-221 | Dmitriy Karpov       |
+ | 9  | K8-222 | Vadim Shkuro         |
+ | 10 | K6-222 | Kirill Kornuhin      |
+ | 11 | K6-222 | Aleksander Chagataev |
+ | 12 | K6-222 | Pavel Skripchenko    |
+ */
+
+prepare = db.prepare("SELECT * FROM students");
+prepare.all(function(err, rows) {
+    statement.rows = rows;
+    statement._sqlInstance = true;
+
+    _.return(statement).filter(function(student) {
+        return student.group.match(/K6/) !== null;
+    }).map(function(student) {
+            console.log(student.name);
+        }).toArray();
+});
+/* returns:
+ Maxim Churkin
+ Vera Aminova
+ Daria Grekova
+ Ivan Demkovich
+ */
+
 ```
