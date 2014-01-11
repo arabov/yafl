@@ -25,7 +25,7 @@ db.all('SELECT * FROM test_table', function(err, rows) {
 
 var statement = {};
 
-prepare = db.prepare("SELECT * FROM students");
+prepare = db.prepare('SELECT * FROM ' + config.sqlite3config.tableName);
 prepare.all(function(err, rows) {
 
     statement.rows = rows;
