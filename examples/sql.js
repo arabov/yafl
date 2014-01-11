@@ -32,6 +32,7 @@ prepare.all(function(err, rows) {
     statement._sqlInstance = true;
 
     _.return(statement).filter(function(student) {
+        console.log(student);
         return student.group.match(/K6/) !== null;
     }).map(function(student) {
             console.log(student.name);

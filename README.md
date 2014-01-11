@@ -100,18 +100,18 @@ _.return(data).zipWith(
 )
 	.toArray().join('\n');
 /* returns:
- 1) Максим Чуркин - 47 points
- 2) Вера Аминова - 14 points
- 3) Дарья Грекова - 3 points
- 4) Иван Демкович - 6 points
- 5) Денис Дубленых - 79 points
- 6) Алексей Королев - 66 points
- 7) Дмитрий Зонин - 14 points
- 8) Дмитрий Карпов - 42 points
- 9) Вадим Шакуро - 44 points
- 10) Кирилл Корнюхин - 2 points
- 11) Александр Чегодаев - 57 points
- 12) Павел Скрипниченко - 18 points
+    1) Максим Чуркин - 47 points
+    2) Вера Аминова - 14 points
+    3) Дарья Грекова - 3 points
+    4) Иван Демкович - 6 points
+    5) Денис Дубленых - 79 points
+    6) Алексей Королев - 66 points
+    7) Дмитрий Зонин - 14 points
+    8) Дмитрий Карпов - 42 points
+    9) Вадим Шакуро - 44 points
+    10) Кирилл Корнюхин - 2 points
+    11) Александр Чегодаев - 57 points
+    12) Павел Скрипниченко - 18 points
  */
 
 
@@ -126,8 +126,7 @@ _.return(data).zipWith(
  data._subscripts = [];
 
  _.return(data).forEach(function(node) {
-     /*
-     returns:
+     /* returns:
          {
              _cacheInstance: true,
              _global: 'tree',
@@ -189,14 +188,14 @@ _.return(data).forEach(function(course) {
     });
 });
 /* returns:
- Denis Dublenih
- Aleksey Korolev
- Dmitriy Zonin
- Dmitriy Karpov
- Vadim Shkuro
- Kirill Kornuhin
- Aleksander Chagataev
- Pavel Skripchenko
+    Denis Dublenih
+    Aleksey Korolev
+    Dmitriy Zonin
+    Dmitriy Karpov
+    Vadim Shkuro
+    Kirill Kornuhin
+    Aleksander Chagataev
+    Pavel Skripchenko
  */
 
 //Table
@@ -224,16 +223,30 @@ prepare.all(function(err, rows) {
     statement._sqlInstance = true;
 
     _.return(statement).filter(function(student) {
+        /* returns:
+            { id: 1, group: 'K6-221', name: 'Maxim Churkin' }
+            { id: 2, group: 'K6-221', name: 'Vera Aminova' }
+            { id: 3, group: 'K6-221', name: 'Daria Grekova' }
+            { id: 4, group: 'K6-221', name: 'Ivan Demkovich' }
+            { id: 5, group: 'K8-221', name: 'Denis Dublenih' }
+            { id: 6, group: 'K8-221', name: 'Aleksey Korolev' }
+            { id: 7, group: 'K8-221', name: 'Dmitriy Zonin' }
+            { id: 8, group: 'K8-221', name: 'Dmitriy Karpov' }
+            { id: 9, group: 'K8-222', name: 'Vadim Shkuro' }
+            { id: 10, group: 'K8-222', name: 'Kirill Kornuhin' }
+            { id: 11, group: 'K8-222', name: 'Aleksander Chagataev' }
+            { id: 12, group: 'K8-222', name: 'Pavel Skripchenko' }
+        */
         return student.group.match(/K6/) !== null;
     }).map(function(student) {
             console.log(student.name);
         }).toArray();
 });
 /* returns:
- Maxim Churkin
- Vera Aminova
- Daria Grekova
- Ivan Demkovich
- */
+    Maxim Churkin
+    Vera Aminova
+    Daria Grekova
+    Ivan Demkovich
+*/
 
 ```
