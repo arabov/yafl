@@ -1,40 +1,70 @@
 var config = require('../lib/config.js')
-    , globals = require('C:\\Globals\\bin\\cache061')
+    , globals = require('cache')
     , _ = require('../lib/return.js')
     ;
+
+var treeData = new globals.Cache();
+
+treeData.open(config.globalsDBconfig, function(error, result){
+        if (error) {
+            console.log(error);
+        }
+        //console.log(result);
+    }
+);
+
+treeData.kill({ global: 'tree' });
+treeData.set('tree', 'node_1', 'value_1');
+treeData.set('tree', 'node_1', 'value_2');
+treeData.set('tree', 'node_2', 'value_3');
+treeData.set('tree', 'node_3', 'value_4');
+
+treeData._cacheInstance = true;
+treeData._global = 'tree';
+treeData._subscripts = [];
 
 exports.checkType = function(test) {
 	var array = _.return([1,2,3,4,5])
 		, obj = _.return({a:1,b:2,c:3,d:4,e:5})
 		, number = _.return(666)
 		, list = _.return('[1..5]')
+        , tree = _.return({ _cacheInstance : true })
+        , table = _.return({ _sqlInstance : true })
 		;
 
 	test.equal(array._type, 0);
 	test.equal(obj._type, 1);
 	test.equal(number._type, 3);
 	test.equal(list._type, 2);
+    test.equal(tree._type, 4);
+    test.equal(table._type, 5);
 
 	test.done();
 };
 
 exports.checkNextValue = function(test) {
+
+
+
 	var array = _.return([1,2,3,4,5])
 		, obj = _.return({a:2,b:4,c:6,d:8,e:10})
 		, number = _.return(666)
 		, list = _.return('[2..5]')
-		;
+        , tree = _.return(treeData)
+        ;
 
-	array.init(); obj.init(); number.init(2); list.init();
+	array.init(); obj.init(); number.init(2); list.init(); tree.init();
 
-	array.next(); obj.next(); number.next(); list.next();
+	array.next(); obj.next(); number.next(); list.next(); tree.next();
 
 	test.equal(array.value(), 2);
 	test.equal(obj.value(), 4);
 	test.equal(number.value(), 668);
 	test.equal(list.value(), 3);
+    test.deepEqual(tree.value()._subscripts, ['node_2']);
 
-	test.done();
+    test.done()
+
 };
 
 exports.checkForEach = function(test) {
@@ -212,30 +242,15 @@ exports.checkSequence = function(test) {
 };
 
 exports.checkGlobals = function(test) {
-    var myData = new globals.Cache();
+    treeData._cacheInstance = true;
+    treeData._global = 'tree';
+    treeData._subscripts = [];
 
-    myData.open(config.globalsDBconfig, function(error, result){
-            if (error) {
-                console.log(error);
-            }
-            //console.log(result);
-        }
-    );
-
-    myData.kill({ global: 'tree' });
-    myData.set('tree', 'node_1', 'value_1');
-    myData.set('tree', 'node_1', 'value_2');
-    myData.set('tree', 'node_2', 'value_3');
-    myData.set('tree', 'node_3', 'value_4');
-
-    myData._cacheInstance = true;
-    myData._global = 'tree';
-    myData._subscripts = [];
-
-    _.return(myData).mapNow(function(node) {
+    _.return(treeData).mapNow(function(node) {
         console.log(node);
     });
 
-    myData.close();
+    treeData.close();
+    test.done();
 
 };

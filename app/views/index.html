@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="continer text-center">
+        <div style="margin-top: 100px;" class="row">
+            <div class="col-xs-2 col-xs-offset-5">
+                <form id="form" autocomplete="on" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="method" placeholder="Метод">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="global" placeholder="ВУЗ">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="year" placeholder="Семестр">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="number" placeholder="Номер работы">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="value" placeholder="Значение">
+                    </div>
+                    <button id="submit" type="submit" class="btn btn-success">Запрос</button>
+                </form>
+            </div>
+        </div>
+        <div style="margin-top: 100px;" class="row">
+            <div class="col-xs-6 col-xs-offset-3">
+                <textarea id="result" rows="10" cols="45" name="text"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+</html>

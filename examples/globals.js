@@ -1,6 +1,7 @@
 var config = require('./../lib/config.js')
-    , globals = require('C:\\Globals\\bin\\cache061')
     , _ = require('../lib/return.js')
+    , globals = require('cache')
+    , sqlite3 = require('sqlite3').verbose()
     ;
 
 var data = new globals.Cache();
@@ -40,6 +41,7 @@ _.return(data).forEach(function(global) {
             });
     }).toArray();
 });
+console.log(addr);
 /* returns: Google office - Mountain View USA CA */
 
 data.close();
