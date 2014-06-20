@@ -1,10 +1,10 @@
 var config = require('../lib/config.js')
     , globals = require('cache')
+    , sqlite3 = require('sqlite3').verbose()
     , _ = require('../lib/return.js')
     ;
 
 var treeData = new globals.Cache();
-
 treeData.open(config.globalsDBconfig, function(error, result){
         if (error) {
             console.log(error);
@@ -12,6 +12,9 @@ treeData.open(config.globalsDBconfig, function(error, result){
         //console.log(result);
     }
 );
+
+var db = new sqlite3.Database(config.sqlite3config.path);
+var prepare = db.prepare('SELECT * FROM words');
 
 treeData.kill({ global: 'tree' });
 treeData.set('tree', 'node_1', 'value_1');
@@ -62,6 +65,19 @@ exports.checkNextValue = function(test) {
 	test.equal(number.value(), 668);
 	test.equal(list.value(), 3);
     test.deepEqual(tree.value()._subscripts, ['node_2']);
+
+    prepare.all(function(err, rows) {
+        var statement = {};
+        statement.rows = rows;
+        statement._sqlInstance = true;
+
+        table = _.return(statement);
+        table.init();
+        table.next();
+
+        test.deepEqual(table.value(), { id_word: 2, word: 'SQL' });
+
+    });
 
     test.done()
 
@@ -241,7 +257,7 @@ exports.checkSequence = function(test) {
 	test.done();
 };
 
-exports.checkGlobals = function(test) {
+exports.checkTree = function(test) {
     treeData._cacheInstance = true;
     treeData._global = 'tree';
     treeData._subscripts = [];
@@ -252,5 +268,21 @@ exports.checkGlobals = function(test) {
 
     treeData.close();
     test.done();
+
+};
+
+exports.checkTable = function(test) {
+    prepare.all(function(err, rows) {
+        var statement = {};
+        statement.rows = rows;
+        statement._sqlInstance = true;
+
+        _.return(statement).mapNow(function(row) {
+            console.log(row);
+        });
+
+        test.done();
+
+    });
 
 };
